@@ -204,7 +204,8 @@ class Arpon {
     }
     update() {
         if(this.topArponY >= 500){
-            this.y-=500;
+            //this.y-=500;
+            alert('cuidado')
         } else if(this.topArponY <500){
             this.topArponY+=9;
         }
