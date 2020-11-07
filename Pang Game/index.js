@@ -73,7 +73,7 @@ function renderCharacter() {
         arpon.update();
     });
     }
-    mouseClicked = false; 
+    
 }
 
 function ArrowPressed(e) {
@@ -204,8 +204,8 @@ class Arpon {
     }
     update() {
         if(this.topArponY >= 500){
-            //this.y-=500;
-            alert('cuidado')
+            this.y-=500;
+            
         } else if(this.topArponY <500){
             this.topArponY+=9;
         }
