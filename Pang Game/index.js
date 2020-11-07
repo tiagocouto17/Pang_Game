@@ -179,8 +179,7 @@ function render() {
     window.requestAnimationFrame(render);
 }
 
-// render();
-//comment 
+
 
 class Arpon {
     constructor(x, y, color) {
