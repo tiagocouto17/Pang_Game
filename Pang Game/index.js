@@ -66,6 +66,12 @@ function renderCharacter() {
         }
         characterX -= 5;
     }
+    let a = new Array();
+for (let i = 0; i < 1; i++) {
+    let color = `red`;
+
+    a.push(new Arpon(characterX + 37, 450, color))
+}
     if (mouseClicked == true) {
        
     a.forEach(function (arpon) {
@@ -213,9 +219,3 @@ class Arpon {
     }
 }
 
-let a = new Array();
-for (let i = 0; i < 1; i++) {
-    let color = `red`;
-
-    a.push(new Arpon(characterX + 37, 450, color))
-}
