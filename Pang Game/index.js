@@ -23,22 +23,19 @@ const bounceSound = new Audio('./sound/bounce-sound.mp3');
 let mouseClicked = false;
 
 backImg.onload = function () {
-    window.setInterval(renderCharacter, 1000 / 30);
+    window.setInterval(renderGame, 1000 / 30);
 }
 
 let x1 = 0, x2 = W;
 let rightKey = false, leftKey = false;
-let mouseX = 0, mouseY = 0;
-
-
 
 let frameIndex = 0;
 let characterX = 200
 
-function renderCharacter() {
+function renderGame() {
     ctx.drawImage(backImg, 0, 0, W, H);
     ctx.drawImage(spriteImg, 0, frameIndex * 100, 100, 100, characterX, 400, 100, 100);
-    backgroundSound.volume = 0.03;
+    backgroundSound.volume = 0.01;
     backgroundSound.play();
 
     // draw & update
@@ -47,10 +44,9 @@ function renderCharacter() {
         ball.update();
     });
 
-    
-
     //character movement
     if (rightKey && characterX < W - 80) {
+        runSound.volume = 0.1;
         runSound.play();
         frameIndex++;
         if (frameIndex >= 12) {
@@ -59,6 +55,7 @@ function renderCharacter() {
         characterX += 5;
     }
     if (leftKey && characterX > 0) {
+        runSound.volume = 0.1;
         runSound.play();
         frameIndex++;
         if (frameIndex == 24 || frameIndex <= 12) {
@@ -66,30 +63,25 @@ function renderCharacter() {
         }
         characterX -= 5;
     }
-    let a = new Array();
-for (let i = 0; i < 1; i++) {
-    let color = `red`;
-
-    a.push(new Arpon(characterX + 37, 450, color))
-}
     if (mouseClicked == true) {
-       
-    a.forEach(function (arpon) {
-        arpon.draw();
-        arpon.update();
-    });
+
+        a.forEach(function (arpon) {
+            arpon.draw();
+            arpon.update();
+        });
+        
     }
-    
+    console.log(mouseClicked);
 }
 
 function ArrowPressed(e) {
     if (e.key == 'ArrowRight') {
         rightKey = true;
-        
+
     }
     if (e.key == 'ArrowLeft') {
         leftKey = true;
-        
+
     }
     e.preventDefault()
 }
@@ -106,15 +98,16 @@ function ArrowReleased(e) {
         runSound.pause();
     }
 }
-
+let PositionOnClick = 0;
+let a = new Array();
 function MouseClick(e) {
     mouseClicked = true
+    console.log(characterX)
+    PositionOnClick = characterX;
+    console.log(PositionOnClick);
+    
+    a.push(new Arpon(PositionOnClick + 37, 450, 'red'))
 }
-
-canvas.addEventListener('click', e => {
-    mouseClicked = true;
-    console.log('s')
-});
 
 window.addEventListener('keydown', ArrowPressed);
 window.addEventListener('keyup', ArrowReleased);
@@ -123,7 +116,7 @@ window.addEventListener('click', MouseClick);
 // Balls functions
 //CLASS
 class Ball {
-    constructor(x, y, r, d, c,a) {	// CONSTRUCTOR
+    constructor(x, y, r, d, c, a) {	// CONSTRUCTOR
         this.x = x; // initial X position
         this.y = y;	// initial Y position
         // (constant) horizontal displacement (velocity): d is a direction angle
@@ -144,21 +137,20 @@ class Ball {
     update() {
         // check Canvas vertical collisions
         if (this.x < this.R || this.x > W - this.R) {
-            this.dX = -this.dX;   
+            this.dX = -this.dX;
         }
-            
+
         // check Canvas horizontal collisions
         if (this.y < this.R || this.y > H - this.R) {
             this.dY = -this.dY;
         } else {
             this.dY += this.a
         }
-        
+
         this.x += this.dX;	// update horizontal position 
         this.y += this.dY;	// update vertical position 
     }
 }
-
 
 //setup as many balls as wanted
 let b = new Array();
@@ -173,28 +165,13 @@ for (let i = 0; i < 1; i++) {
     b.push(new Ball(xInit, yInit, 25, direction, color))
 }
 
-function render() {
-
-    // draw & update
-    b.forEach(function (ball) {
-        ball.draw();
-        ball.update();
-    });
-
-    //new frame
-    window.requestAnimationFrame(render);
-}
-
-
-
 class Arpon {
     constructor(x, y, color) {
         this.x = x;
         this.y = y;
         this.color = color;
         this.topArponX = 15;
-        this.topArponY = 20 
-
+        this.topArponY = 20
 
     }
     draw() {
@@ -209,13 +186,12 @@ class Arpon {
         ctx.stroke();
     }
     update() {
-        if(this.topArponY >= 500){
-            this.y-=500;
-            
-        } else if(this.topArponY <500){
-            this.topArponY+=9;
+        if (this.topArponY >= 500) {
+            this.y -= 500;
+            mouseClicked = false;
+        } else if (this.topArponY < 500) {
+            this.topArponY += 9;
         }
 
     }
 }
-
