@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Pang Game</title>
+	<style>
+		canvas {
+			display: block;
+		}
+
+		body {
+			background-color: black
+		}
+
+		svg {
+			animation: changeColor 10s;
+		}
+
+		#firstBtn {
+			animation: moveFirstBtn 10s;
+
+			display: inline-block;
+			vertical-align: middle;
+			-webkit-transform: perspective(1px) translateZ(0);
+			transform: perspective(1px) translateZ(0);
+			box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+			-webkit-transition-duration: 0.5s;
+			transition-duration: 0.5s;
+		}
+
+		#firstBtn:hover {
+			-webkit-transform: scale(1.05);
+			transform: scale(1.05);
+			-webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+			transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+			
+			fill: rgb(9, 252, 9); 
+		}
+
+		#secondBtn {
+			animation: moveSecondBtn 10s;
+
+			display: inline-block;
+			vertical-align: middle;
+			-webkit-transform: perspective(1px) translateZ(0);
+			transform: perspective(1px) translateZ(0);
+			box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+			-webkit-transition-duration: 0.5s;
+			transition-duration: 0.5s;
+		}
+
+		#secondBtn:hover {
+			-webkit-transform: scale(1.05);
+			transform: scale(1.05);
+			-webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+			transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+
+			fill: rgb(9, 252, 9); 
+		}
+
+		#thirdBtn {
+			animation: moveThirdBtn 10s;
+
+			display: inline-block;
+			vertical-align: middle;
+			-webkit-transform: perspective(1px) translateZ(0);
+			transform: perspective(1px) translateZ(0);
+			box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+			-webkit-transition-duration: 0.5s;
+			transition-duration: 0.5s;
+		}
+
+		#thirdBtn:hover {
+			-webkit-transform: scale(1.05);
+			transform: scale(1.05);
+			-webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+			transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+
+			fill: rgb(9, 252, 9); 
+		}
+
+		#letterP {
+			animation: moveItUp 2s 1;
+		}
+
+		#letterFirstA {
+			animation: moveItDown 3s linear 1;
+		}
+
+		#letterN {
+			animation: moveItUp 4s linear 1;
+		}
+
+		#letterFirstG {
+			animation: moveItDown 5s linear 1;
+		}
+
+		#letterSecondG {
+			animation: moveItUp 5s linear 1;
+		}
+
+		#letterSecondA {
+			animation: moveItDown 4.5s linear 1;
+		}
+
+		#letterM {
+			animation: moveItUp 3.5s linear 1;
+		}
+
+		#letterE {
+			animation: moveItDown 2s linear 1;
+		}
+
+		@keyframes moveItUp {
+			from {
+				fill: transparent;
+				transform: scale(0);
+				transform: translateY(-500px);
+			}
+
+			to {
+				fill: rgb(9, 252, 9);
+				transform: scale(1);
+				transform: translateY(0px);
+			}
+		}
+
+		@keyframes moveItDown {
+			from {
+				fill: white;
+				transform: scale(0.1);
+				transform: translateY(550px);
+
+			}
+
+			to {
+				fill: rgb(9, 252, 9);
+				transform: scale(1);
+				transform: translateY(0px);
+			}
+		}
+
+		@keyframes moveFirstBtn {
+			0% {
+				transform: scaleY(3);
+				transform: translateX(1000px);
+			}
+
+			50% {
+				transform: scaleY(3);
+				transform: translateX(1000px)
+			}
+
+			100% {
+				transform: scaleY(1);
+				transform: translateX(0px)
+			}
+		}
+
+		@keyframes moveSecondBtn {
+			0% {
+				transform: scaleY(3);
+				transform: translateX(-1000px);
+			}
+
+			50% {
+				transform: scaleY(3);
+				transform: translateX(-1000px)
+			}
+
+			100% {
+				transform: scaleY(1);
+				transform: translateX(0px)
+			}
+		}
+
+		@keyframes moveThirdBtn {
+			0% {
+				transform: scaleY(3);
+				transform: translateY(1000px);
+			}
+
+			50% {
+				transform: scaleY(3);
+				transform: translateY(1000px)
+			}
+
+			100% {
+				transform: scaleY(1);
+				transform: translateY(0px)
+			}
+		}
+
+		@keyframes changeColor {
+			0% {
+				background-color: black;
+			}
+
+			100% {
+				background-color:rgb(0,76,153);
+			}
+ 		}
+	</style>
+</head>
+
+<body>
+	<svg width="1000" height="500" style="border:solid 3px rgb(9, 252, 9); background-color: rgb(0,76,153)" id="svg">
+		<g>
+			<!-- construção do logo -->
+			<text id="letterP" font-family="ArcadeClassic" font-size="80pt" x="287" y="105" stroke='black' fill='rgb(9, 252, 9)'
+				text-anchor='middle' alignment-baseline="central">
+				P
+			</text>
+			<text id="letterFirstA" font-family="ArcadeClassic" font-size="80pt" x="346" y="105" stroke='black'
+				fill='rgb(9, 252, 9)' text-anchor='middle' alignment-baseline="central">
+				A
+			</text>
+			<text id="letterN" font-family="ArcadeClassic" font-size="80pt" x="405" y="105" stroke='black' fill='rgb(9, 252, 9)'
+				text-anchor='middle' alignment-baseline="central">
+				N
+			</text>
+			<text id="letterFirstG" font-family="ArcadeClassic" font-size="80pt" x="463" y="105" stroke='black'
+				fill='rgb(9, 252, 9)' text-anchor='middle' alignment-baseline="central">
+				G
+			</text>
+			<text id="letterSecondG" font-family="ArcadeClassic" font-size="80pt" x="535" y="105" stroke='black'
+				fill='rgb(9, 252, 9)' text-anchor='middle' alignment-baseline="central">
+				G
+			</text>
+			<text id="letterSecondA" font-family="ArcadeClassic" font-size="80pt" x="595" y="105" stroke='black'
+				fill='rgb(9, 252, 9)' text-anchor='middle' alignment-baseline="central">
+				A
+			</text>
+			<text id="letterM" font-family="ArcadeClassic" font-size="80pt" x="652" y="105" stroke='black' fill='rgb(9, 252, 9)'
+				text-anchor='middle' alignment-baseline="central">
+				M
+			</text>
+			<text id="letterE" font-family="ArcadeClassic" font-size="80pt" x="711" y="105" stroke='black' fill='rgb(9, 252, 9)'
+				text-anchor='middle' alignment-baseline="central">
+				E
+			</text>
+		</g>
+		<g>
+			<!-- construção dos botões -->
+			<a id="firstBtn" href="easy.html">
+				<rect id='easyBtn' x="350" y="200" width="300" height="50" stroke="white" stroke-width="2px"
+					style="stroke: black; fill: rgb(204,255,153)"></rect>
+				<text id='easyBtnText' x="50%" y="225" font-family="ArcadeClassic" font-size="40" stroke="rgb(0,0,153)"
+					class="btns" text-anchor='middle' alignment-baseline="central">Easy</text>
+			</a>
+
+			<a id="secondBtn" href='hard.html'>
+				<rect id='hardBtn' x="350" y="300" width="300" height="50" stroke="white" stroke-width="2px"
+					style="stroke: black; fill:  rgb(204,255,153)"></rect>
+				<text id='hardBtnText' x="50%" y="325" font-family="ArcadeClassic" font-size="40" stroke="rgb(0,0,153)"
+					class="btns" text-anchor='middle' alignment-baseline="central">Hard</text>
+			</a>
+
+			<a id="thirdBtn" href='multiplayer.html'>
+				<rect id='multiPlayerBtn' x="350" y="400" width="300" height="50" stroke="white" stroke-width="2px"
+					style="stroke: black; fill:  rgb(204,255,153)"></rect>
+				<text id='multiPlayerBtnText' x="50%" y="425" font-family="ArcadeClassic" font-size="40" stroke="rgb(0,0,153)"
+					class="btns" text-anchor='middle' alignment-baseline="central">MultiPlayer</text>
+			</a>
+
+		</g>
+	</svg>
+</body>
+
+</html>
